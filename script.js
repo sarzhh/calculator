@@ -1,3 +1,6 @@
+const buttons = document.querySelector('.buttons')
+const display = document.querySelector('.display')
+
 const add = (a , b) => {
     const sum = a + b;
     return sum;
@@ -47,5 +50,11 @@ const operate = (operator,firstNumber, lastNumber) => {
 
      
 }
-console.log(operate('multiply', 4 , 2));
 
+
+buttons.addEventListener("click", (event) => {
+   if(event.target.matches('span')){
+    display.textContent = event.target.textContent;
+    display.style.fontSize = '25px';
+   }
+});
