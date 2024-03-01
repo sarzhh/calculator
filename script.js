@@ -54,7 +54,8 @@ const operate = (operator,firstNumber, lastNumber) => {
 
 buttons.addEventListener("click", (event) => {
    if(event.target.matches('span')){
-    display.textContent = event.target.textContent;
+    const displayValue = event.target.textContent;
+    display.textContent += displayValue;
     display.style.fontSize = '25px';
    }
 });
