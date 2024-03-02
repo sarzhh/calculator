@@ -5,44 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
 </head>
 <body>
     <h1>CALCULATOR</h1>
     <div class="container">
-        <div class="display"></div>
-        <div class="buttons">
-            <div class="first">
-                <span>AC</span>
-                <span>DEL</span>
-                <span>%</span>
-                <span>÷</span>
+        <div class="display">
+            <div class="prev-value"></div>
+            <div class="current-value">0</div>
+        </div>
+        <div class="sub-container">
+            <div class="delete-and-clear">
+                <button class="delete">DEL</button>
+                <button class="clear">AC</button>
             </div>
-            <div class="second">
-                <span>7</span>
-                <span class="eight">8</span>
-                <span class="nine">9</span>
-                <span class="multiplication">×</span>
+            <div class="buttons">
+                <button class="btn">7</button>
+                <button class="btn">8</button>
+                <button class="btn">9</button>
+                <button class="operant">÷</button>
+                <button class="btn">4</button>
+                <button class="btn">5</button>
+                <button class="btn">6</button>
+                <button class="operant">x</button>
+                <button class="btn">1</button>
+                <button class="btn">2</button>
+                <button class="btn">3</button>
+                <button class="btn">-</button>
+                <button class="btn decimal">.</button>
+                <button class="btn">0</button>
+                <button class="btn">=</button>
+                <button class="operant">+</button>
             </div>
-            <div class="button">
-                <span>4</span>
-                <span>5</span>
-                <span class="six">6</span>
-                <span class="minus">-</span>
-            </div>
-            <div class="fourth">
-                <span class="button">1</span>
-                <span class="two">2</span>
-                <span class="three">3</span>
-                <span class="plus">+</span>
-            </div>
-            <div class="fifth">
-                <span class="">+/-</span>
-                <span class="zero">0</span>
-                <span class="decimal">.</span>
-                <span class="equal">=</span>
-            </div>
-        </div>        
+        </div>
+        
     </div>
+    
 </body>
 </html>

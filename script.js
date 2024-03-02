@@ -1,5 +1,6 @@
-const buttons = document.querySelector('.buttons')
-const display = document.querySelector('.display')
+const buttons = document.querySelector('.buttons');
+const display = document.querySelector('.display');
+const equal = document.querySelector('#equal');
 
 const add = (a , b) => {
     const sum = a + b;
