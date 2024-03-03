@@ -9,7 +9,7 @@ const deleteNumber = document.querySelector('.delete');
 const clear = document.querySelector('.clear');
 const numbers = document.querySelectorAll('.btn');
 const operators = document.querySelectorAll('.operant');
-const equal = document.querySelectorAll('.equal');
+const equal = document.querySelector('.equal');
 
 const add = (a , b) => {
     const sum = a + b;
@@ -36,59 +36,52 @@ const divide = (a , b) => {
 
 
 
-const operate = (operator,firstNumber, lastNumber) => {
-   
-    if (operator == 'add') {
-       const value = add(firstNumber , lastNumber);
+const operate = (operant,firstNumber, secondNumber) => {
+   let value;
+   console.log("Operant:", operant);
+   console.log("First Number:", firstNumber);
+   console.log("Second Number:", secondNumber);
+    if (operant == '+') {
+       const value = add(firstNumber , secondNumber);
        return value;
     } 
-     else if (operator == 'subtract') {
-        const value = subtract(firstNumber , lastNumber);
+     else if (operant == '-') {
+        const value = subtract(firstNumber , secondNumber);
         return value;
      }
-     else if (operator == 'multiply') {
-        const value = multiply(firstNumber , lastNumber);
+     else if (operant == 'x') {
+        const value = multiply(firstNumber , secondNumber);
         return value;
      }
-     else if (operator == 'divide') {
-        const value = divide(firstNumber , lastNumber);
+     else if (operant == '÷') {
+        const value = divide(firstNumber , secondNumber);
         return value;
      }
 
      
 }
 
-/*
-buttons.addEventListener("click", (event) => {
-   if(event.target.matches('span')){
-    const displayValue = event.target.textContent;
-    display.textContent += displayValue;
-    display.style.fontSize = '25px';
-   }
-});*/
 
-/*
-numbers.forEach(number =>{
-   number.addEventListener('click', () =>{
-      const value = number.textContent;
-      prevValue.textContent += value;
-   })
-});*/
 let operatorClicked = false;
 
 numbers.forEach(number =>{
    number.addEventListener('click', () => {
-      const value = number.textContent;
-      prevValue.textContent += value;
       
-      if(!operatorClicked){
-         firstNumber = prevValue.textContent;
+       previousNumber = number.textContent;
+      prevValue.textContent += previousNumber;
+      
+      if(!operant){
+         firstNumber = parseFloat(prevValue.textContent);
+         
       }
 
-      else{
-         secondNumber = prevValue.textContent;
+      else {
+        
+         secondNumber = parseFloat(previousNumber);
+         
       }
       
+
       operators.forEach(operator => {
          operator.disabled = false;
       });
@@ -97,9 +90,11 @@ numbers.forEach(number =>{
 
 operators.forEach(operator => {
    operator.addEventListener('click', ()=>{
-      const operatorValue = operator.textContent;
+      let operatorValue = "";
+      operatorValue = operator.textContent;
+      operant = operator.textContent
       prevValue.textContent += operatorValue;
-      operant = prevValue.textContent;
+      previousNumber = '';
       
       operatorClicked = true;
       
@@ -108,5 +103,12 @@ operators.forEach(operator => {
       });
      
    });
+   
+});
+
+equal.addEventListener('click',() =>{
+   console.log("Equal button clicked");
+   const result = operate(operant, firstNumber, secondNumber);
+   currentValue.textContent = result;
    
 });
