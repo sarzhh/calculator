@@ -131,7 +131,10 @@ operators.forEach(operator => {
 
 
 equal.addEventListener('click',() =>{
-   const result = operate(operant, firstNumber, secondNumber).toFixed(2);
+   let result = operate(operant, firstNumber, secondNumber);
+   if(!Number.isInteger(result)){
+      result = result.toFixed(2);
+   }
    currentValue.textContent = result;
    });
 
