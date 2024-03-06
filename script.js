@@ -31,7 +31,8 @@ const multiply = (a , b) => {
 
 const divide = (a , b) => {
    if(b === 0){
-      throw new Error("Division by zero is not allowed");
+      alert("Division by zero is not allowed");
+      return;
     }
    
    const quotient = a / b;
