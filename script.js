@@ -68,7 +68,7 @@ numbers.forEach(number =>{
    number.addEventListener('click', () => {
       
        previousNumber = number.textContent;
-      prevValue.textContent += previousNumber + " ";
+      prevValue.textContent += previousNumber;
       
       if(!operant){
          firstNumber = parseFloat(prevValue.textContent);
@@ -94,7 +94,7 @@ operators.forEach(operator => {
       if (!isfirstOperatorClicked){
          operatorValue = operator.textContent;
          operant = operator.textContent
-         prevValue.textContent += operatorValue + " ";
+         prevValue.textContent += " " + operatorValue + " ";
          previousNumber = '';
          isfirstOperatorClicked = true;
       }
@@ -104,7 +104,7 @@ operators.forEach(operator => {
          const firstResult = operate(operant, firstNumber, secondNumber);
          firstNumber = firstResult;
          operant = operator.textContent;
-         prevValue.textContent += operator.textContent + " ";
+         prevValue.textContent += " " + operator.textContent + " ";
          secondNumber = " ";
          secondNumber = previousNumber;
       }
@@ -124,7 +124,7 @@ operators.forEach(operator => {
 
 
 equal.addEventListener('click',() =>{
-   const result = operate(operant, firstNumber, secondNumber);
+   const result = operate(operant, firstNumber, secondNumber).toFixed(2);
    currentValue.textContent = result;
    
 });
