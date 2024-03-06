@@ -38,9 +38,6 @@ const divide = (a , b) => {
 
 const operate = (operant,firstNumber, secondNumber) => {
    let value;
-   console.log("Operant:", operant);
-   console.log("First Number:", firstNumber);
-   console.log("Second Number:", secondNumber);
     if (operant == '+') {
        const value = add(firstNumber , secondNumber);
        return value;
@@ -63,12 +60,15 @@ const operate = (operant,firstNumber, secondNumber) => {
 
 
 let operatorClicked = false;
+let isfirstOperatorClicked = false;
+let isSecondOperatorClicked = false;
+
 
 numbers.forEach(number =>{
    number.addEventListener('click', () => {
       
        previousNumber = number.textContent;
-      prevValue.textContent += previousNumber;
+      prevValue.textContent += previousNumber + " ";
       
       if(!operant){
          firstNumber = parseFloat(prevValue.textContent);
@@ -91,13 +91,28 @@ numbers.forEach(number =>{
 operators.forEach(operator => {
    operator.addEventListener('click', ()=>{
       let operatorValue = "";
-      operatorValue = operator.textContent;
-      operant = operator.textContent
-      prevValue.textContent += operatorValue;
-      previousNumber = '';
+      if (!isfirstOperatorClicked){
+         operatorValue = operator.textContent;
+         operant = operator.textContent
+         prevValue.textContent += operatorValue + " ";
+         previousNumber = '';
+         isfirstOperatorClicked = true;
+      }
+
+      else{
+         
+         const firstResult = operate(operant, firstNumber, secondNumber);
+         firstNumber = firstResult;
+         operant = operator.textContent;
+         prevValue.textContent += operator.textContent + " ";
+         secondNumber = " ";
+         secondNumber = previousNumber;
+      }
+
       
+      
+     
       operatorClicked = true;
-      
       operators.forEach(operator => {
          operator.disabled = true;
       });
@@ -106,9 +121,11 @@ operators.forEach(operator => {
    
 });
 
+
+
 equal.addEventListener('click',() =>{
-   console.log("Equal button clicked");
    const result = operate(operant, firstNumber, secondNumber);
    currentValue.textContent = result;
    
 });
+
