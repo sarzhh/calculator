@@ -61,7 +61,7 @@ const operate = (operant,firstNumber, secondNumber) => {
 
 let operatorClicked = false;
 let isfirstOperatorClicked = false;
-let isSecondOperatorClicked = false;
+
 
 
 numbers.forEach(number =>{
@@ -80,6 +80,7 @@ numbers.forEach(number =>{
          secondNumber = parseFloat(previousNumber);
          
       }
+      
       
 
       operators.forEach(operator => {
@@ -118,14 +119,25 @@ operators.forEach(operator => {
       });
      
    });
-   
+  
 });
+
 
 
 
 equal.addEventListener('click',() =>{
    const result = operate(operant, firstNumber, secondNumber).toFixed(2);
    currentValue.textContent = result;
-   
-});
+   });
+
+clear.addEventListener('click',() => {
+   prevValue.textContent = " ";
+   currentValue.textContent = "0";
+   result = 0;
+   previousNumber = " ";
+   firstNumber = 0;
+   secondNumber = 0;
+   operant = '';
+   isfirstOperatorClicked = false;
+})
 
