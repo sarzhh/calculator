@@ -116,8 +116,6 @@ operators.forEach(operator => {
          secondNumber = previousNumber;
       }
 
-      
-      
      
       operatorClicked = true;
       operators.forEach(operator => {
@@ -132,6 +130,9 @@ operators.forEach(operator => {
 
 
 equal.addEventListener('click',() =>{
+   if(!firstNumber || !secondNumber || !operant){
+      return;
+      }
    let result = operate(operant, firstNumber, secondNumber);
    if(!Number.isInteger(result)){
       result = result.toFixed(2);
@@ -148,5 +149,14 @@ clear.addEventListener('click',() => {
    secondNumber = 0;
    operant = '';
    isfirstOperatorClicked = false;
+});
+
+deleteNumber.addEventListener('click',() =>{
+   let currentValue = prevValue.textContent;
+    
+    currentValue = currentValue.slice(0, -1);
+    
+    
+    prevValue.textContent = currentValue;
 })
 
